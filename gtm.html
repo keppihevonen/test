@@ -22,12 +22,72 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>About GTM</title>
 <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
 <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/qunit.css" type="text/css" media="screen">  
+
+<script>/*<![CDATA[*/!window.QUnit && document.write('<script src="inc/qunit.js"><\/script>')/*]]>*/</script>
+	<script src="http://swarm.simplecartjs.com/js/inject.js"></script>
+	
+    <!-- Your project file goes here -->  
+	<script>/*<![CDATA[*/
+	
+	if( QUnit.urlParams.lib && QUnit.urlParams.ver ){
+		document.write('<script src="https://ajax.googleapis.com/ajax/libs/'+ 
+					QUnit.urlParams.lib + '/' + 
+					QUnit.urlParams.ver + '/' + 
+					QUnit.urlParams.lib + '.js"><\/script>');
+	} else {
+		document.write('<script src="inc/jquery.1.6.1.min.js"><\/script>');
+	}
+	
+	if( QUnit.urlParams.commit ){
+		document.write('<script src="inc/get-raw-javascript.php?file=https://raw.github.com/wojodesign/simplecart-js/'+ QUnit.urlParams.commit +'/simpleCart.js"><\/script>');
+		document.write('<script src="inc/get-raw-javascript.php?file=https://raw.github.com/wojodesign/simplecart-js/'+ QUnit.urlParams.commit +'/test/test.core.js"><\/script>');
+	} else {
+		document.write('<script src="../simpleCart.js"><\/script>');
+		document.write('<script type="text/javascript" src="test.core.js"><\/script>');
+	}
+	/*]]>*/</script>
+
+	
+	<style >
+
+	 	.itemContainer{
+			width:100%;
+			float:left;
+		}
+
+		.itemContainer div{
+			float:left;
+			margin: 5px 20px 5px 20px ;
+		}
+
+		.itemContainer a{
+			text-decoration:none;
+		}
+
+		.cartHeaders{
+			width:100%;
+			float:left;
+		}
+
+		.cartHeaders div{
+			float:left;
+			margin: 5px 20px 5px 20px ;
+		}
+
+
+	</style>
+
 </head>
+
+
+
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPXGNXS"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
 
 <div class="top-bar">
 <div class="row">
@@ -49,7 +109,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="top-bar-right">
 <ul class="menu">
-<li><a href="./viewcart.html"><button type="button">View cart</button></a></li>
+<li>	<p>
+	Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items) <br />
+	<a href="javascript:;" class="simpleCart_empty">empty cart</a>
+	
+	</p></li>
 <li><input type="search" placeholder="Search"></li>
 <li><button type="button" class="button">Search</button></li>
 </ul>
@@ -87,24 +151,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div class="medium-6 large-5 columns">
-<h3>Google Tag Manager</h3>
+<div class="simpleCart_shelfItem">
+<h3 class="item_name">Google Tag Manager</h3>
 <p>Google Tag Manager helps make tag management simple, easy and reliable by allowing marketers and webmasters to deploy website tags all in one place.</p>
+<span class="item_price">187.95€</span>
 <label>Size
-<select>
+<select class="item_Size">
 <option value="free">Free</option>
 <option value="360">360 - not available yet</option>
 </select>
 </label>
-<div class="row">
+<div class="row" >
 <div class="small-3 columns">
-<label for="middle-label" class="middle">Quantity</label>
+<label for="middle-label" class="middle item_quantity">Quantity</label>
 </div>
 <div class="small-9 columns">
 <input type="text" id="middle-label" placeholder="One container is usually enough">
 </div>
 </div>
    
-<a href="#" id='addToCart' class="button large expanded">Buy Now</a>
+<input type="button"  id='addToCart' class="button large expanded item_add" value="Buy Now"/>
    <!--<div class="small secondary expanded button-group">
 <a class="button">Facebook</a>
 <a class="button">Twitter</a>
@@ -112,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 </div>
- 
+ </div>
 <div class="column row">
 <hr>
 <ul class="tabs" data-tabs id="example-tabs">
@@ -189,10 +255,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="float-right">Copyright 2016</li>
 </ul>
  </div>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+/* <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> */
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>
       $(document).foundation();
     </script>
+	
+	
 </body>
 </html>
